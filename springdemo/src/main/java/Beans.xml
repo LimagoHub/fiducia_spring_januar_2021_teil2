@@ -15,7 +15,9 @@
       
       <bean id = "stringHelper" class = "de.limago.springdemo.OtherStringHelperImpl"  />
    
-
+	  <bean id = "calculator" class = "de.math.CalculatorImpl"  />
+	  
+	  <bean id = "client" class = "de.client.CalcClient"  autowire="constructor" init-method="go"/>
 
 
 </beans>

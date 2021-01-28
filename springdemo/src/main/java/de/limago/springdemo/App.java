@@ -3,6 +3,8 @@ package de.limago.springdemo;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import de.client.CalcClient;
+
 /**
  * Hello world!
  *
@@ -17,11 +19,11 @@ public class App {
 
 		context.registerShutdownHook();
 
-		System.out.println("xxxx");
+		
 
-		HelloWorld obj1 = (HelloWorld) context.getBean("helloWorld");
-
-		obj1.getMessage();
+//		CalcClient client = (CalcClient) context.getBean("client");
+//
+//		client.go();
 
 		
 
