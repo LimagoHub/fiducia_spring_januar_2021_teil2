@@ -1,11 +1,32 @@
 package de.limago.springdemo;
 
-public class HelloWorld {
-	private String message;
-	private final StringHelper stringHelper;
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
-	public HelloWorld(final StringHelper stringHelper) {
-		
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component
+//@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+//@Lazy
+public class HelloWorld {
+	
+	@Value("Hallo Universum")
+	private String message;
+	
+	
+	
+	private final StringHelper stringHelper;
+	
+	
+	//@Autowired
+	public HelloWorld(@Qualifier("toUpper") final StringHelper stringHelper) {
+		System.out.println("ctor");
 		this.stringHelper = stringHelper;
 	}
 
@@ -24,14 +45,15 @@ public class HelloWorld {
 	}
 
 	public void getMessage() {
-		System.out.println(stringHelper.process("your message : " + message));
+		System.out.println("your message : " + message);
 	}
 
-	// init
+	@PostConstruct
 	public void init() {
-		System.out.println("init " + message);
+		System.out.println(stringHelper.process("init " + message));
 	}
 
+	@PreDestroy
 	public void destroy() {
 		System.out.println("destroy: und tschüss");
 	}

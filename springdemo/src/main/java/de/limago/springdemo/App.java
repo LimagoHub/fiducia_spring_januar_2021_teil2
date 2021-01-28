@@ -3,8 +3,6 @@ package de.limago.springdemo;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import de.client.CalcClient;
-
 /**
  * Hello world!
  *

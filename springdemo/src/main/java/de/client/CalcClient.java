@@ -11,7 +11,7 @@ public class CalcClient {
 	
 	private final Calculator calculator;
 	
-		public CalcClient(Calculator calculator) {
+	public CalcClient(Calculator calculator) {
 		this.calculator = calculator;
 	}
 
