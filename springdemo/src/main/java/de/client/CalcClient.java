@@ -1,8 +1,12 @@
 package de.client;
 
+import javax.annotation.PostConstruct;
+
+import org.springframework.stereotype.Component;
+
 import de.math.Calculator;
 
-
+@Component
 public class CalcClient {
 
 	private static final double KomplizierteFormel1 = 3.0; 
@@ -15,7 +19,7 @@ public class CalcClient {
 		this.calculator = calculator;
 	}
 
-	
+	@PostConstruct
 	public void go() {
 		
 		System.out.println(calculator.add(KomplizierteFormel1, KomplizierteFormel2));
