@@ -1,5 +1,7 @@
 package de.limago.springdemo;
 
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.support.AbstractApplicationContext;
@@ -10,6 +12,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  *
  */
 @Configuration
+@ComponentScan(basePackages = "de")
 @EnableAspectJAutoProxy
 public class App 
 {
@@ -17,8 +20,8 @@ public class App
 	
     public static void main( String[] args )
     {
-    	 AbstractApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
-         Calculator calculator = (Calculator) context.getBean("calculator");
+    	 AbstractApplicationContext context = new AnnotationConfigApplicationContext(App.class);
+         Calculator calculator = (Calculator) context.getBean("calculatorImpl");
          System.out.println(calculator.add(3, 4));
          System.out.println(calculator.sub(3, 4));
          context.close();
