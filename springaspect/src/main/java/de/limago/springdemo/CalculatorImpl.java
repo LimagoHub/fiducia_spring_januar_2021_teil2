@@ -1,11 +1,7 @@
-package de.math;
+package de.limago.springdemo;
 
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
-
-@Component
-@Qualifier("calculator")
 public class CalculatorImpl implements Calculator {
+	
 	
 	@Override
 	public double add(double a, double b) {

@@ -2,6 +2,8 @@ package de.client;
 
 import javax.annotation.PostConstruct;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import de.math.Calculator;
@@ -15,7 +17,9 @@ public class CalcClient {
 	
 	private final Calculator calculator;
 	
-	public CalcClient(Calculator calculator) {
+	
+	@Autowired
+	public CalcClient(@Qualifier("calculatorSecure")Calculator calculator) {
 		this.calculator = calculator;
 	}
 
