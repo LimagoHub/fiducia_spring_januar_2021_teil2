@@ -15,8 +15,17 @@ import java.awt.event.TextListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import javax.annotation.PostConstruct;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Component;
+
 import de.gui.presenter.IEuro2DollarPresenter;
 
+
+@Component
+@Lazy
 public class Euro2DollarRechnerView extends Frame implements IEuro2DollarRechnerView {
 	
 	private Panel centerPanel = null;
@@ -26,7 +35,7 @@ public class Euro2DollarRechnerView extends Frame implements IEuro2DollarRechner
 	private Button btnRechnen = null;
 	private Button btnEnde = null;
 	
-	private IEuro2DollarPresenter presenter;
+	@Autowired private IEuro2DollarPresenter presenter;
 	
 	public Euro2DollarRechnerView() {
 		addWindowListener(new WindowAdapter() {
@@ -40,7 +49,12 @@ public class Euro2DollarRechnerView extends Frame implements IEuro2DollarRechner
 		pack();
 	}
 	
-	
+//	@Override
+//	@PostConstruct
+//	public void show() {
+//		super.show();
+//		
+//	}
 	
 	public IEuro2DollarPresenter getPresenter() {
 		return presenter;

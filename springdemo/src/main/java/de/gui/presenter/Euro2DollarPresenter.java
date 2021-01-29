@@ -1,13 +1,19 @@
 package de.gui.presenter;
 
+import javax.annotation.PostConstruct;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import de.gui.IEuro2DollarRechnerView;
 import de.model.Euro2DollarForm;
 import de.model.IEuro2DollarRechner;
 
+@Component
 public class Euro2DollarPresenter implements IEuro2DollarPresenter {
 	
-	private IEuro2DollarRechnerView view;
-	private IEuro2DollarRechner model;
+	@Autowired private IEuro2DollarRechnerView view;
+	@Autowired private IEuro2DollarRechner model;
 	
 	
 	
@@ -77,10 +83,11 @@ public class Euro2DollarPresenter implements IEuro2DollarPresenter {
 	 * @see de.gui.presenter.IEuro2DollarPresenter#populateItems()
 	 */
 	@Override
+	@PostConstruct
 	public void populateItems() {
 		view.setDollar("" +0);
 		view.setEuro("" + 0);
-		updateRechnenActionState();
+		view.setRechnenEnabled(true);
 	}
 
 	@Override

@@ -1,5 +1,8 @@
 package de.model;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Euro2DollarRechnerImpl implements IEuro2DollarRechner {
 	
 	

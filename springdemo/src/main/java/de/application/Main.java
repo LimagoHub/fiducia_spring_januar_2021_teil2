@@ -1,34 +1,23 @@
 package de.application;
 
-import de.gui.Euro2DollarRechnerView;
-import de.gui.IEuro2DollarRechnerView;
-import de.gui.presenter.Euro2DollarPresenter;
-import de.gui.presenter.IEuro2DollarPresenter;
-import de.model.Euro2DollarRechnerImpl;
-import de.model.IEuro2DollarRechner;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 
+import de.gui.IEuro2DollarRechnerView;
+
+
+@ComponentScan(basePackages = "de")
 public class Main {
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		IEuro2DollarRechner model = new Euro2DollarRechnerImpl();
+		AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(Main.class);
+		annotationConfigApplicationContext.registerShutdownHook();
 		
-		IEuro2DollarPresenter presenter = new Euro2DollarPresenter();
-		
-		IEuro2DollarRechnerView view = new Euro2DollarRechnerView();
-		
-		
-		presenter.setView(view);
-		presenter.setModel(model);
-		
-		view.setPresenter(presenter);
-		
-		presenter.populateItems();
-		
+		IEuro2DollarRechnerView view =(IEuro2DollarRechnerView) annotationConfigApplicationContext.getBean("euro2DollarRechnerView");
 		view.show();
-
 	}
 
 }
